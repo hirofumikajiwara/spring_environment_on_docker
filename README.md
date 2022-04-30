@@ -2,7 +2,7 @@
 
 ## Objective
 
-* Be able to develop spring boot web with localhost postgres on docker on windows 11.
+* Be able to develop spring boot web with localhost postgresql on docker on windows 11.
 * Be able to access with vscode remote development.
 
 ## Procedure
@@ -27,6 +27,30 @@
   * Maven for Java
   * Gradle for Java
   * Spling Boot Extension Pack
-16. create project with spring initializer
-17. build and run this project.
-18. show http://localhost:8080.
+16. create project with spring initializer.
+17. set postgres to application.properties.
+18. build and run this project.
+19. show http://localhost:8080
+
+### application.properties
+
+```
+spring.jpa.database=POSTGRESQL
+spring.datasource.url=jdbc:postgresql://postgres:5432/postgres
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+```
+
+## Misc
+
+### run docker on ubuntu
+
+```
+sudo service docker start
+```
+
+### backup database on ubuntu
+
+```
+docker run -it --rm --network spring-boot-docker_default postgres pg_dump -h spring-boot-docker_postgres_1 -U postgres> postgresql.dump
+```
