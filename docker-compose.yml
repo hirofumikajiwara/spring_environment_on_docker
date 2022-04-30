@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes: 
+      - ./postgres/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  spring-boot:
+    build: ./spring-boot
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - ./project:/project
+    depends_on:
+      - postgres
+  
